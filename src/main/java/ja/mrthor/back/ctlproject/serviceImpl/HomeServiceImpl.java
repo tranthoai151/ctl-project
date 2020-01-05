@@ -8,6 +8,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class HomeServiceImpl implements HomeService {
@@ -20,8 +21,18 @@ public class HomeServiceImpl implements HomeService {
 
     @Override
     public List<Home> getHomes() {
-
         List<Home> homes = homeRepository.findAll();
         return homes;
+    }
+
+    @Override
+    public Home getHomeById(Integer id) {
+        Home home = homeRepository.getOne(id);
+        return home;
+    }
+
+    @Override
+    public Optional<Home> findOne(Integer id) {
+        return homeRepository.findById(id);
     }
 }
