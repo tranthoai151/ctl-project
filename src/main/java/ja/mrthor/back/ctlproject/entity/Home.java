@@ -11,33 +11,26 @@ import javax.persistence.*;
 @Entity
 @Table(name = "home")
 public class Home {
-    @JsonProperty("Id")
     @Id
     @Column(name="id")
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
 
-    @JsonProperty("Name")
     @Column(name="name")
     private String name;
 
-    @JsonProperty("NumberOfRooms")
     @Column(name="number_of_rooms")
     private String numberOfRooms;
 
-    @JsonProperty("Address")
     @Column(name="address")
     private String address;
 
-    @JsonProperty("City")
     @Column(name="city")
     private String city;
 
-    @JsonProperty("Status")
     @Column(name="status")
     private String status;
 
-    @JsonProperty("Images")
     @Column(name="images")
     private String images;
 

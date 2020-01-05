@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api")
 public class HomeResource {
@@ -25,10 +26,10 @@ public class HomeResource {
     private HomeService homeService;
 
     @GetMapping("/homes")
-    public ResponseEntity<List<Home>> getHomes(Pageable pageable) {
+    public List<Home> getHomes() {
         log.debug("REST request to get a page of Homes");
-        final Page<Home> page = homeService.getHomes(pageable);
-        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/homes");
-        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+        //throw new RuntimeException("Some Error has Happened! Contact Support at ***-***");
+        List<Home> homes = homeService.getHomes();
+        return homes;
     }
 }
