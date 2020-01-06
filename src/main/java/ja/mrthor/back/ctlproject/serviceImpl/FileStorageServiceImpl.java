@@ -44,9 +44,11 @@ public class FileStorageServiceImpl implements FileStorageService {
             InputStream is = file.getInputStream();
 
             // Copy file to the target location (Replacing existing file with the same name)
-            Path targetLocation = fileStorageLocation.resolve("");
-            path = path+"home1/";
-            Files.copy(is, Paths.get(path + fileName),
+            File localStore = new File(path+ "/home1");
+            if (!localStore.exists()){
+                localStore.mkdir();
+            }
+            Files.copy(is, Paths.get(localStore.getPath() +"/" + fileName),
                     StandardCopyOption.REPLACE_EXISTING);
 
             return fileName;

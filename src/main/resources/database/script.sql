@@ -22,3 +22,22 @@ INSERT INTO `the_dragon`.`home` (name, number_of_rooms, address, city, images, s
 VALUES ('TDH Tre Tresor', 3, 'Ho Chi Minh City', 1, '/static/img/home/4/home4.jpg', 'active');
 INSERT INTO `the_dragon`.`home` (name, number_of_rooms, address, city, images, status)
 VALUES ('Vinhomes Golden River - Ho Chi Minh City', 2, 'District 1, Ho Chi Minh City', 1, '/static/img/home/5/home5.jpg', 'active');
+
+
+
+DROP TABLE IF EXISTS `the_dragon`.`room`;
+CREATE TABLE `the_dragon`.`room` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `home_id` int(10) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `price` decimal(10, 2) NOT NULL,
+  `number_of_guest` int(10) NOT NULL,
+  `room_type` varchar(50) NOT NULL,
+  `rental_type` varchar(50) NOT NULL,
+  `bedroom` int(10) NOT NULL,
+  `bed` int(10) NOT NULL,
+  `bath` int(10) NOT NULL,
+  `address` text,
+  `status` varchar(50),
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
