@@ -1,10 +1,13 @@
 package ja.mrthor.back.ctlproject.serviceImpl;
 
 import ja.mrthor.back.ctlproject.entity.Home;
+import ja.mrthor.back.ctlproject.entity.Room;
 import ja.mrthor.back.ctlproject.respository.HomeRepository;
 import ja.mrthor.back.ctlproject.service.HomeService;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -34,5 +37,12 @@ public class HomeServiceImpl implements HomeService {
     @Override
     public Optional<Home> findOne(Integer id) {
         return homeRepository.findById(id);
+    }
+
+    @Override
+    public Page<Home> getHomesAllByAdmin(Integer pageIndex, Integer perPage) {
+        Pageable pageable = PageRequest.of(pageIndex, perPage, Sort.by("name"));
+        Page<Home> pageHomes = homeRepository.findAll(pageable);
+        return pageHomes;
     }
 }

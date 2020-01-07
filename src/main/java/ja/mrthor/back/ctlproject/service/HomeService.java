@@ -12,4 +12,8 @@ public interface HomeService {
     Home getHomeById(Integer id);
     Optional<Home> findOne(Integer id);
 
+
+    //admin
+    Page<Home> getHomesAllByAdmin(Integer pageIndex, Integer perPage);
+
 }

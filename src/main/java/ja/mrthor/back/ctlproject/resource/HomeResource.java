@@ -26,7 +26,7 @@ import java.util.Optional;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("/api/admin")
+@RequestMapping("/api")
 public class HomeResource {
     private final Logger log = LoggerFactory.getLogger(HomeResource.class);
 
@@ -47,14 +47,6 @@ public class HomeResource {
         }
         return homes;
     }
-
-    //GET HOME BY ID
-//    @GetMapping("/homes/{id}")
-//    public Home getHomesById(@PathVariable Integer id){
-//        log.debug("REST request to get a page of Homes");
-//        Home home = homeService.getHomeById(id);
-//        return home;
-//    }
 
     @GetMapping("/homes/{id}")
     public ResponseEntity<Home> getCompany(@PathVariable Integer id) {

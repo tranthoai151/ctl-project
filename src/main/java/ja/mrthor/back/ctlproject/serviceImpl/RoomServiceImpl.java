@@ -3,6 +3,11 @@ package ja.mrthor.back.ctlproject.serviceImpl;
 import ja.mrthor.back.ctlproject.entity.Room;
 import ja.mrthor.back.ctlproject.respository.RoomRepository;
 import ja.mrthor.back.ctlproject.service.RoomService;
+import ja.mrthor.back.ctlproject.util.ResponseData;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -18,14 +23,11 @@ public class RoomServiceImpl implements RoomService {
     }
 
     @Override
-    public List<Room> getRoomsByHomeId(Integer homeId) {
-        List<Room> rooms = new ArrayList<>();
-        try{
-            rooms = roomRepository.findByHomeId(homeId);
-        }catch (Exception e){
-            rooms = null;
-            System.out.println(e.getMessage());
-        }
-        return rooms;
+    public Page<Room> getRoomsByHomeId(Integer homeId, Integer pageIndex, Integer perPage) {
+        Pageable pageable = PageRequest.of(pageIndex, perPage, Sort.by("name"));
+
+        Page<Room> pageRooms = roomRepository.findAll(pageable);
+
+        return pageRooms;
     }
 }
