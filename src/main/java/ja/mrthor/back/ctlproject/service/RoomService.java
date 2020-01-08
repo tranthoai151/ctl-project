@@ -9,4 +9,5 @@ import java.util.List;
 
 public interface RoomService {
     Page<Room> getRoomsByHomeId(Integer homeId, Integer pageIndex, Integer perPage);
+    Room getRomById(Integer id);
 }

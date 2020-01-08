@@ -15,7 +15,7 @@ import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("/api/admin")
+@RequestMapping("/api/admin/rooms")
 public class AdminRoomResource {
     private final Logger log = LoggerFactory.getLogger(AdminRoomResource.class);
 
@@ -41,6 +41,14 @@ public class AdminRoomResource {
         response.setStatus(HttpStatus.OK);
         response.setMessage("Success");
         return response;
+    }
+
+    //get room by Id
+    @GetMapping("/{id}")
+    public Room getRoomById(@PathVariable Integer id){
+        Room room = new Room();
+        room = roomService.getRomById(id);
+        return room;
     }
 
 }

@@ -30,4 +30,9 @@ public class RoomServiceImpl implements RoomService {
 
         return pageRooms;
     }
+
+    @Override
+    public Room getRomById(Integer id) {
+        return roomRepository.getOne(id);
+    }
 }

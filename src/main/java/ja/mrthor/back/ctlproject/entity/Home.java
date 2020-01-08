@@ -1,8 +1,11 @@
 package ja.mrthor.back.ctlproject.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +15,8 @@ import java.util.List;
  */
 @Entity
 @Table(name = "home")
-public class Home {
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+public class Home implements Serializable {
     @Id
     @Column(name="id")
     @GeneratedValue(strategy= GenerationType.IDENTITY)
@@ -35,9 +39,6 @@ public class Home {
 
     @Column(name="images")
     private String images;
-
-    @OneToMany()
-    private List<Room> rooms = new ArrayList<>();
 
     public Integer getId() {
         return id;
@@ -94,14 +95,5 @@ public class Home {
     public void setImages(String images) {
         this.images = images;
     }
-
-    public List<Room> getRooms() {
-        return rooms;
-    }
-
-    public void setRooms(List<Room> rooms) {
-        this.rooms = rooms;
-    }
-
 
 }

@@ -10,8 +10,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api/admin/homes")
@@ -40,6 +38,12 @@ public class AdminHomeResource {
         response.setStatus(HttpStatus.OK);
         response.setMessage("Success");
         return response;
+    }
+
+    //GET HOME ById
+    @GetMapping("/{id}")
+    public Home getHomeById(@PathVariable Integer id) {
+        return homeService.getHomeById(id);
     }
 
 
