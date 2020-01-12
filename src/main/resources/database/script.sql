@@ -41,3 +41,17 @@ CREATE TABLE `the_dragon`.`room` (
   `status` varchar(50),
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+
+DROP TABLE IF EXISTS `the_dragon`.`user`;
+CREATE TABLE `the_dragon`.`user` (
+  `id`          int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `username` 	varchar(100) NOT NULL,
+  `password`   	text NOT NULL,
+  `first_name` 	varchar(50) NULL,
+  `last_name`  	varchar(50) NULL,
+  `address` 	text NULL,
+  `email` 		varchar(100) NOT NULL,
+  `role_id`     int(10),
+  PRIMARY KEY(`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
